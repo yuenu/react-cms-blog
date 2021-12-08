@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 
 function PostDetail({ post }) {
-  console.log(post)
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
 
@@ -62,7 +61,7 @@ function PostDetail({ post }) {
 
   return (
     <div>
-      <div className="pb-12 mb-8 bg-white rounded-lg shadow-lg lg:p-x">
+      <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
         <div className="relative mb-6 overflow-hidden shadow-md">
           <img
             src={post.featuredImage.url}
@@ -70,7 +69,7 @@ function PostDetail({ post }) {
             className="object-top h-full rounded-t-lg wi-full"
           />
         </div>
-        <div className="px-4 lg:px-0">
+        <div>
           <div className="flex w-full mb-8 item-cneter">
             <div className="flex items-center w-full mb-4 mr-8 lg:mb-0">
               <img
@@ -109,10 +108,14 @@ function PostDetail({ post }) {
                 const children = typeObj.children.map((item, itemIndex) =>
                   getContentFragment(itemIndex, item.text, item)
                 )
-                return getContentFragment(index, children, typeObj, typeObj.type)
+                return getContentFragment(
+                  index,
+                  children,
+                  typeObj,
+                  typeObj.type
+                )
               })
-            })
-          }
+            })}
         </div>
       </div>
     </div>

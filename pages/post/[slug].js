@@ -7,10 +7,16 @@ import {
   Author,
   Comments,
   CommentsForm,
+  Loader
 } from '../../components'
+import { useRouter } from 'next/router'
 
 const PostDetails = ({ post }) => {
-  console.log(post)
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <div className="container px-10 mx-auto mb-8">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
